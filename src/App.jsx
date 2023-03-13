@@ -6,6 +6,7 @@ import Skeleton from "@mui/material/Skeleton";
 import { Avatar, Box, Typography } from "@mui/material";
 import SkeletonTable from "./SkeletonTable";
 import TableContent from "./Table";
+import UnskippablePopup from "./unSkippablePopup";
 function App() {
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -44,58 +45,7 @@ function App() {
 
   return (
     <div>
-      {loading ? (
-        // <Box width={476} height={124} >
-        //   <Box display="flex" alignItems="center">
-
-        // <Skeleton variant="circular"  sx={{
-        //       mr:1,
-        //       bgcolor: "gray",
-        //       animation: `${increaseSize} 2s ease-in-out infinite`,
-        //     }}>
-        //         <Avatar />
-        //       </Skeleton>
-        //   <Skeleton
-        //     variant="rounded"
-        //     width={40}
-        //     height={10}
-        //     sx={{
-        //       bgcolor: "gray",
-        //       animation: `${increaseWidth} 2s ease-in-out infinite`,
-        //     }}
-        //   />
-        //           </Box>
-
-        //   <Skeleton
-        //     variant="rounded"
-        //     width={100}
-        //     height={10}
-        //     sx={{
-        //       my: 2,
-        //       bgcolor: "gray",
-        //       animation: `${increaseWidth} 2s ease-in-out infinite`,
-        //     }}
-        //   />
-        //   <Skeleton
-        //     variant="rounded"
-        //     width={100}
-        //     height={10}
-        //     sx={{
-        //       my: 2,
-        //       bgcolor: "gray",
-        //       animation: `${increaseWidth} 2s ease-in-out infinite`,
-        //     }}
-        //   />
-        // </Box>
-
-        <SkeletonTable />
-      ) : (
-        // <div>
-        //   <h1>hello</h1>
-        //   <h1>line2</h1>
-        // </div>
-        <TableContent />
-      )}
+      {loading ? <SkeletonTable /> : <TableContent />}
       <Box sx={{ mt: 2, backgroundColor: "white", padding: 2 }}>
         {loading ? (
           <Box width={476} height={124}>
@@ -157,25 +107,28 @@ function App() {
           >
             <Box display="flex" alignItems="center">
               <Skeleton
-                variant="circular"
+                variant="rounded"
+                width={40}
+                height={10}
                 sx={{
-                  mr: 1,
                   bgcolor: "gray",
+                  animation: `${increaseWidth} 2s ease-in-out infinite`,
                 }}
-              >
-                <Avatar />
-              </Skeleton>
+              />
             </Box>
             <Box>
               <Typography>Total Users</Typography>
               <Typography>10,000</Typography>
               <Typography>Active Users 8200</Typography>
             </Box>
-            {/* <h1>line2</h1> */}
           </Box>
-          // <TableContent/>
         )}
       </Box>
+      {/* <UnskippablePopup
+        open={true}
+        title="error"
+        message="Authorization token failed"
+      /> */}
     </div>
   );
 }
